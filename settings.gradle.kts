@@ -15,4 +15,14 @@ dependencyResolutionManagement {
 
 rootProject.name = "FlightSearch"
 include(":app")
- 
+
+include(":core")
+include(":core:resources")
+
+
+include(":features")
+include(":features:airline_tickets")
+include(":features:hotels")
+include(":features:shortcut")
+include(":features:subscriptions")
+include(":features:profile")

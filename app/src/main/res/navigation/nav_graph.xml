@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/airlineTicketsFragment">
+
+    <fragment
+        android:id="@+id/airlineTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.AirlineTicketsFragment"
+        android:label="AirlineTicketsFragment" />
+    <fragment
+        android:id="@+id/hotelsFragment"
+        android:name="com.alexisdev.hotels.HotelsFragment"
+        android:label="HotelsFragment" />
+    <fragment
+        android:id="@+id/shortcutFragment"
+        android:name="com.alexisdev.shortcut.ShortcutFragment"
+        android:label="ShortcutFragment" />
+    <fragment
+        android:id="@+id/subscriptionsFragment"
+        android:name="com.alexisdev.subscriptions.SubscriptionsFragment"
+        android:label="SubscriptionsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.alexisdev.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>
