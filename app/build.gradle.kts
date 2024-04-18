@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
 }
