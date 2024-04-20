@@ -1,4 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="features_airline_tickets_main_title">Поиск дешевых\nавиабилетов</string>
+    <string name="features_airline_tickets_offers_title">Музыкально отлететь</string>
 </resources>

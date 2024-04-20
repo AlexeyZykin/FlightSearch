@@ -39,6 +39,9 @@ android {
 
 dependencies {
     implementation(project(":core:resources"))
+    implementation(project(":core:network"))
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
 
     implementation(project(":features:airline_tickets"))
     implementation(project(":features:hotels"))
@@ -53,4 +56,7 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
 }
