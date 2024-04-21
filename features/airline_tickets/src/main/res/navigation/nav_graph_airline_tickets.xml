@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_airline_tickets"
+    app:startDestination="@id/airlineTicketsFragment">
+
+    <fragment
+        android:id="@+id/airlineTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.AirlineTicketsFragment"
+        android:label="fragment_airline_tickets"
+        tools:layout="@layout/fragment_airline_tickets" >
+        <action
+            android:id="@+id/action_airlineTicketsFragment_to_searchBottomFragment"
+            app:destination="@id/searchBottomFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/searchBottomFragment"
+        android:name="com.alexisdev.airline_tickets.SearchBottomFragment"
+        android:label="fragment_search_bottom"
+        tools:layout="@layout/fragment_search_bottom" >
+        <action
+            android:id="@+id/action_searchBottomFragment_to_complexRouteFragment"
+            app:destination="@id/complexRouteFragment" />
+        <action
+            android:id="@+id/action_searchBottomFragment_to_weekendFragment"
+            app:destination="@id/weekendFragment" />
+        <action
+            android:id="@+id/action_searchBottomFragment_to_hotTicketsFragment"
+            app:destination="@id/hotTicketsFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/complexRouteFragment"
+        android:name="com.alexisdev.airline_tickets.ComplexRouteFragment"
+        android:label="fragment_complex_route"
+        tools:layout="@layout/fragment_complex_route" />
+    <fragment
+        android:id="@+id/weekendFragment"
+        android:name="com.alexisdev.airline_tickets.WeekendFragment"
+        android:label="fragment_weekend"
+        tools:layout="@layout/fragment_weekend" />
+    <fragment
+        android:id="@+id/hotTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.HotTicketsFragment"
+        android:label="fragment_hot_tickets"
+        tools:layout="@layout/fragment_hot_tickets" />
+</navigation>

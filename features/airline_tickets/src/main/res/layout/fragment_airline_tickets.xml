@@ -54,24 +54,33 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputDeparture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Минск"
+                        android:backgroundTint="@color/transparent"
+                        android:hint="@string/search_placeholder_departure"
+                        android:inputType="text"
+                        android:minHeight="@dimen/min_height"
+                        android:singleLine="true"
                         android:textSize="@dimen/body_large"
                         android:textStyle="bold" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginVertical="@dimen/margin_small"
                         android:background="@color/grey" />
 
-                    <TextView
-                        android:id="@+id/tv"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputArrival"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Куда - Турция"
+                        android:backgroundTint="@color/transparent"
+                        android:focusable="false"
+                        android:hint="@string/search_placeholder_arrival"
+                        android:inputType="text"
+                        android:minHeight="@dimen/min_height"
+                        android:singleLine="true"
                         android:textSize="@dimen/body_large" />
 
                 </LinearLayout>

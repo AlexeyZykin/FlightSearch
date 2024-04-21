@@ -19,4 +19,6 @@
 
     <dimen name="card_corner_radius_standard">16dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
+
+    <dimen name="min_height">48dp</dimen>
 </resources>

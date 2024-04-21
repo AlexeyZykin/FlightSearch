@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen"
+    tools:context=".SearchBottomFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        app:cardCornerRadius="@dimen/card_corner_radius_standard"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_standard"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDeparture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/transparent"
+                android:drawableStart="@drawable/ic_airline_tickets"
+                android:focusable="false"
+                android:hint="@string/search_placeholder_departure"
+                android:inputType="text"
+                android:minHeight="@dimen/min_height"
+                android:singleLine="true"
+                android:textSize="@dimen/body_large"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputArrival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/transparent"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableEnd="@drawable/ic_close"
+                android:hint="@string/search_placeholder_arrival"
+                android:inputType="text"
+                android:minHeight="@dimen/min_height"
+                android:singleLine="true"
+                android:textSize="@dimen/body_large"
+                app:endIconMode="clear_text" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        app:layout_constraintTop_toBottomOf="@+id/cvSearch" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        app:layout_constraintTop_toBottomOf="@id/rvSearchTips"
+        app:cardCornerRadius="@dimen/card_corner_radius_standard">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchRecommendations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

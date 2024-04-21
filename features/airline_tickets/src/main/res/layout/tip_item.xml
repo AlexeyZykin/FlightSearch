@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgTip"
+        android:layout_width="@dimen/tip_icon_size"
+        android:layout_height="@dimen/tip_icon_size"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tvTipTitle"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold" />
+</LinearLayout>

@@ -19,7 +19,6 @@ include(":app")
 include(":core")
 include(":core:resources")
 
-
 include(":features")
 include(":features:airline_tickets")
 include(":features:hotels")
@@ -30,3 +29,4 @@ include(":core:network")
 include(":core:data")
 include(":core:model")
 include(":core:domain")
+include(":core:ui")

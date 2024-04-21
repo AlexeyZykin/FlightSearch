@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.alexisdev.airline_tickets.adapter.OffersAdapter
+import com.alexisdev.airline_tickets.adapter.OffersDelegateAdapter
+import com.alexisdev.ui.adapter.DelegateAdapterManager
 import com.alexisdev.airline_tickets.databinding.FragmentAirlineTicketsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,7 +17,9 @@ class AirlineTicketsFragment : Fragment() {
     private val viewModel by viewModel<AirlineTicketsViewModel>()
     private lateinit var binding: FragmentAirlineTicketsBinding
     private val adapter by lazy {
-        OffersAdapter()
+        DelegateAdapterManager(
+            OffersDelegateAdapter()
+        )
     }
 
     override fun onCreateView(
@@ -31,6 +34,10 @@ class AirlineTicketsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         subscribeObserver()
+        binding.inputArrival.setOnClickListener {
+            val action = AirlineTicketsFragmentDirections.actionAirlineTicketsFragmentToSearchBottomFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun initRecyclerView() {
@@ -41,7 +48,7 @@ class AirlineTicketsFragment : Fragment() {
 
     private fun subscribeObserver() {
         viewModel.offers.observe(viewLifecycleOwner) { offers ->
-            adapter.map(offers)
+            adapter.swapData(offers)
         }
     }
 }

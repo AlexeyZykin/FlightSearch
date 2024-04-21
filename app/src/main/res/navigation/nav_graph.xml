@@ -2,26 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/airlineTicketsFragment">
+    app:startDestination="@id/nav_graph_airline_tickets">
 
-    <fragment
-        android:id="@+id/airlineTicketsFragment"
-        android:name="com.alexisdev.airline_tickets.AirlineTicketsFragment"
-        android:label="AirlineTicketsFragment" />
-    <fragment
-        android:id="@+id/hotelsFragment"
-        android:name="com.alexisdev.hotels.HotelsFragment"
-        android:label="HotelsFragment" />
-    <fragment
-        android:id="@+id/shortcutFragment"
-        android:name="com.alexisdev.shortcut.ShortcutFragment"
-        android:label="ShortcutFragment" />
-    <fragment
-        android:id="@+id/subscriptionsFragment"
-        android:name="com.alexisdev.subscriptions.SubscriptionsFragment"
-        android:label="SubscriptionsFragment" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.alexisdev.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+    <include
+        app:graph="@navigation/nav_graph_airline_tickets" />
+
+    <include
+        app:graph="@navigation/nav_graph_hotels" />
+
+    <include
+        app:graph="@navigation/nav_graph_shortcut" />
+
+    <include
+        app:graph="@navigation/nav_graph_subscriptions" />
+
+    <include
+        app:graph="@navigation/nav_graph_profile" />
+
 </navigation>
