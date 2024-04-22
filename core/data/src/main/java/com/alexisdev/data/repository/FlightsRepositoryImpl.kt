@@ -1,5 +1,6 @@
 package com.alexisdev.data.repository
 
+import com.alexisdev.common.Response
 import com.alexisdev.data.toOffer
 import com.alexisdev.data.toTicket
 import com.alexisdev.data.toTicketOffer
@@ -14,28 +15,58 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 internal class FlightsRepositoryImpl(private val flightsApi: FlightsApi) : FlightsRepository {
-    override fun fetchOffers(): Flow<List<Offer>> = flow {
-        val offers = flightsApi.fetchOffers().offers
-            .map { offerDTO ->
-                offerDTO.toOffer()
-            }
-        emit(offers)
+    override fun fetchOffers(): Flow<Response<List<Offer>>> = flow {
+        emit(Response.Loading())
+        val apiResponse = try {
+            flightsApi.fetchOffers().offers
+        } catch (e: Exception) {
+            emit(Response.Error(msg = "No internet connection"))
+            null
+        }
+
+        if (apiResponse != null) {
+            val offers = apiResponse
+                .map { offerDTO ->
+                    offerDTO.toOffer()
+                }
+            emit(Response.Success(offers))
+        }
     }
 
-    override fun fetchTicketOffers(): Flow<List<TicketOffer>> = flow {
-        val ticketsOffers = flightsApi.fetchTicketOffers().ticketOffers
-            .map { ticketOfferDTO ->
-                ticketOfferDTO.toTicketOffer()
-            }
-        emit(ticketsOffers)
+    override fun fetchTicketOffers(): Flow<Response<List<TicketOffer>>> = flow {
+        emit(Response.Loading())
+        val apiResponse = try {
+            flightsApi.fetchTicketOffers().ticketOffers
+        } catch (e: Exception) {
+            emit(Response.Error(msg = "No internet connection"))
+            null
+        }
+
+        if (apiResponse != null) {
+            val ticketsOffers = apiResponse
+                .map { ticketOfferDTO ->
+                    ticketOfferDTO.toTicketOffer()
+                }
+            emit(Response.Success(ticketsOffers))
+        }
     }
 
-    override fun fetchTickets(): Flow<List<Ticket>> = flow {
-        val tickets = flightsApi.fetchTickets().tickets
-            .map { ticketDTO ->
-                ticketDTO.toTicket()
-            }
-        emit(tickets)
+    override fun fetchTickets(): Flow<Response<List<Ticket>>> = flow {
+        emit(Response.Loading())
+        val apiResponse = try {
+            flightsApi.fetchTickets().tickets
+        } catch (e: Exception) {
+            emit(Response.Error(msg = "No internet connection"))
+            null
+        }
+
+        if (apiResponse != null) {
+            val tickets = apiResponse
+                .map { ticketDTO ->
+                    ticketDTO.toTicket()
+                }
+            emit(Response.Success(tickets))
+        }
     }
 
     override fun fetchRecommendations(): Flow<List<Recommendation>> = flow {

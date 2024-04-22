@@ -1,15 +1,15 @@
 package com.alexisdev.airline_tickets.screens
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alexisdev.airline_tickets.state.AirlineTicketsUiState
 import com.alexisdev.airline_tickets.AirlineTicketsViewModel
 import com.alexisdev.airline_tickets.adapter.OffersDelegateAdapter
 import com.alexisdev.ui.adapter.DelegateAdapterManager
@@ -58,8 +58,17 @@ class AirlineTicketsFragment : Fragment() {
     }
 
     private fun subscribeObserver() {
-        viewModel.offers.observe(viewLifecycleOwner) { offers ->
-            adapter.swapData(offers)
+        viewModel.offers.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is AirlineTicketsUiState.Loading -> {}
+
+                is AirlineTicketsUiState.Success -> if (state.data != null) {
+                    adapter.swapData(state.data)
+                }
+
+                is AirlineTicketsUiState.Error ->
+                    Toast.makeText(requireActivity(), state.msg, Toast.LENGTH_LONG).show()
+            }
         }
         viewModel.departurePoint.observe(viewLifecycleOwner) { cachedDeparturePoint ->
             binding.svDeparture.setText(cachedDeparturePoint)

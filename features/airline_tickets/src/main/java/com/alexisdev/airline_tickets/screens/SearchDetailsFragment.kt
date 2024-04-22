@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -12,6 +13,8 @@ import com.alexisdev.airline_tickets.R
 import com.alexisdev.airline_tickets.SearchDetailsViewModel
 import com.alexisdev.airline_tickets.adapter.FlightDelegateAdapter
 import com.alexisdev.airline_tickets.databinding.FragmentSearchDetailsBinding
+import com.alexisdev.airline_tickets.state.AirlineTicketsUiState
+import com.alexisdev.airline_tickets.state.SearchDetailsUiState
 import com.alexisdev.airline_tickets.util.DateManager
 import com.alexisdev.airline_tickets.util.onDrawableEndClick
 import com.alexisdev.ui.adapter.DelegateAdapterManager
@@ -63,8 +66,17 @@ class SearchDetailsFragment : Fragment() {
     }
 
     private fun subscribeObserver() {
-        viewModel.ticketOffers.observe(viewLifecycleOwner) { ticketOffers ->
-            adapter.swapData(ticketOffers)
+        viewModel.ticketOffers.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is SearchDetailsUiState.Loading -> {}
+
+                is SearchDetailsUiState.Success -> if (state.data != null) {
+                    adapter.swapData(state.data)
+                }
+
+                is SearchDetailsUiState.Error ->
+                    Toast.makeText(requireActivity(), state.msg, Toast.LENGTH_LONG).show()
+            }
         }
         viewModel.departurePoint.observe(viewLifecycleOwner) {
             binding.inputDeparture.setText(it)

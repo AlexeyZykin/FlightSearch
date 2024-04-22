@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alexisdev.airline_tickets.state.AirlineTicketsUiState
+import com.alexisdev.common.Response
 import com.alexisdev.data.repository.UserDataRepository
 import com.alexisdev.domain.FetchOffersUseCase
 import com.alexisdev.model.Offer
@@ -15,8 +17,8 @@ class AirlineTicketsViewModel(
     private val fetchOffersUseCase: FetchOffersUseCase,
     private val userDataRepository: UserDataRepository
 ) : ViewModel() {
-    private val _offers = MutableLiveData<List<Offer>>()
-    val offers: LiveData<List<Offer>> get() = _offers
+    private val _offers = MutableLiveData<AirlineTicketsUiState<List<Offer>>>()
+    val offers: LiveData<AirlineTicketsUiState<List<Offer>>> get() = _offers
     private val _departurePoint = MutableLiveData<String>()
     val departurePoint get() = _departurePoint
 
@@ -27,8 +29,16 @@ class AirlineTicketsViewModel(
     }
 
     private fun fetchOffers() = viewModelScope.launch(Dispatchers.IO) {
-        fetchOffersUseCase.invoke().distinctUntilChanged().collect { offers ->
-            _offers.postValue(offers)
+        fetchOffersUseCase.invoke().distinctUntilChanged().collect { response ->
+            when (response) {
+                is Response.Loading -> _offers.postValue(AirlineTicketsUiState.Loading())
+
+                is Response.Success -> if (response.data != null) {
+                    _offers.postValue(AirlineTicketsUiState.Success(response.data))
+                }
+
+                is Response.Error -> _offers.postValue(AirlineTicketsUiState.Error(response.msg))
+            }
         }
     }
 

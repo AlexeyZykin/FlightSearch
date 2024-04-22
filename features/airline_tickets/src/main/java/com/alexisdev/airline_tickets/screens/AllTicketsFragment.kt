@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexisdev.airline_tickets.AllTicketsViewModel
 import com.alexisdev.airline_tickets.adapter.TicketDelegateAdapter
 import com.alexisdev.airline_tickets.databinding.FragmentAllTicketsBinding
+import com.alexisdev.airline_tickets.state.AllTicketsUiState
 import com.alexisdev.ui.adapter.DelegateAdapterManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,8 +43,17 @@ class AllTicketsFragment : Fragment() {
     }
 
     private fun subscribeObservers() {
-        viewModel.tickets.observe(viewLifecycleOwner) { tickets ->
-            adapter.swapData(tickets)
+        viewModel.tickets.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is AllTicketsUiState.Loading -> {}
+
+                is AllTicketsUiState.Success -> if (state.data != null) {
+                    adapter.swapData(state.data)
+                }
+
+                is AllTicketsUiState.Error ->
+                    Toast.makeText(requireActivity(), state.msg, Toast.LENGTH_LONG).show()
+            }
         }
         viewModel.pathway.observe(viewLifecycleOwner) {
             binding.tvPathway.text = it

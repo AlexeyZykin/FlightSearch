@@ -57,7 +57,10 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
-datastore = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+datastore-proto = { module = "androidx.datastore:datastore", version.ref = "datastore" }
+datastore-proto-core = { module = "androidx.datastore:datastore-core", version.ref = "datastore" }
 
 
 [plugins]

@@ -30,9 +30,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    //implementation(libs.datastore)
-    implementation("androidx.datastore:datastore:1.1.0")
-    implementation("androidx.datastore:datastore-core:1.1.0")
-    implementation("androidx.datastore:datastore-preferences:1.1.0")
-    implementation("androidx.datastore:datastore-preferences-core:1.1.0")
+
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore.preferences.core)
+    implementation(libs.datastore.proto)
+    implementation(libs.datastore.proto.core)
 }
