@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface FlightsRepository {
     fun fetchOffers(): Flow<List<Offer>>
 
-    fun fetchTicketsOffers(): Flow<List<TicketOffer>>
+    fun fetchTicketOffers(): Flow<List<TicketOffer>>
 
     fun fetchTickets(): Flow<List<Ticket>>
 

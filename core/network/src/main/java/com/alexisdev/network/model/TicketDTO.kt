@@ -1,33 +1,35 @@
 package com.alexisdev.network.model
 
+import com.google.gson.annotations.SerializedName
+
 data class TicketDTO(
-    val id: Int,
-    val badge: String,
-    val price: PriceDTO,
-    val providerName: String,
-    val company: String,
-    val departure: FlightInfoDTO,
-    val arrival: FlightInfoDTO,
-    val hasTransfer: Boolean,
-    val hasVisaTransfer: Boolean,
-    val luggage: LuggageDTO,
-    val handLuggage: HandLuggageDTO,
-    val isReturnable: Boolean,
-    val isExchangable: Boolean,
+    @SerializedName("id") val id: Int,
+    @SerializedName("badge") val badge: String?,
+    @SerializedName("price") val price: PriceDTO,
+    @SerializedName("provider_name") val providerName: String,
+    @SerializedName("company") val company: String,
+    @SerializedName("departure") val departure: FlightInfoDTO,
+    @SerializedName("arrival") val arrival: FlightInfoDTO,
+    @SerializedName("has_transfer") val hasTransfer: Boolean,
+    @SerializedName("has_visa_transfer") val hasVisaTransfer: Boolean,
+    @SerializedName("luggage") val luggage: LuggageDTO,
+    @SerializedName("hand_luggage") val handLuggage: HandLuggageDTO,
+    @SerializedName("is_returnable") val isReturnable: Boolean,
+    @SerializedName("is_exchangable") val isExchangeable: Boolean,
 )
 
 data class FlightInfoDTO(
-    val town: String,
-    val date: String,
-    val airport: String
+    @SerializedName("town") val town: String,
+    @SerializedName("date") val date: String,
+    @SerializedName("airport") val airport: String
 )
 
 data class LuggageDTO(
-    val hasLuggage: Boolean,
-    val price: PriceDTO
+    @SerializedName("has_luggage") val hasLuggage: Boolean,
+    @SerializedName("price") val price: PriceDTO?,
 )
 
 data class HandLuggageDTO(
-    val hasHandLuggage: Boolean,
-    val size: String
+    @SerializedName("has_hand_luggage") val hasHandLuggage: Boolean,
+    @SerializedName("size") val size: String?
 )

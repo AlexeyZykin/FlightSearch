@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/airlineTicketsFragment"
-        android:name="com.alexisdev.airline_tickets.AirlineTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.screens.AirlineTicketsFragment"
         android:label="fragment_airline_tickets"
         tools:layout="@layout/fragment_airline_tickets" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <dialog
         android:id="@+id/searchBottomFragment"
-        android:name="com.alexisdev.airline_tickets.SearchBottomFragment"
+        android:name="com.alexisdev.airline_tickets.screens.SearchBottomFragment"
         android:label="fragment_search_bottom"
         tools:layout="@layout/fragment_search_bottom" >
         <action
@@ -28,20 +28,40 @@
         <action
             android:id="@+id/action_searchBottomFragment_to_hotTicketsFragment"
             app:destination="@id/hotTicketsFragment" />
+        <action
+            android:id="@+id/action_searchBottomFragment_to_searchDetailsFragment"
+            app:destination="@id/searchDetailsFragment" />
     </dialog>
     <fragment
         android:id="@+id/complexRouteFragment"
-        android:name="com.alexisdev.airline_tickets.ComplexRouteFragment"
+        android:name="com.alexisdev.airline_tickets.screens.ComplexRouteFragment"
         android:label="fragment_complex_route"
         tools:layout="@layout/fragment_complex_route" />
     <fragment
         android:id="@+id/weekendFragment"
-        android:name="com.alexisdev.airline_tickets.WeekendFragment"
+        android:name="com.alexisdev.airline_tickets.screens.WeekendFragment"
         android:label="fragment_weekend"
         tools:layout="@layout/fragment_weekend" />
     <fragment
         android:id="@+id/hotTicketsFragment"
-        android:name="com.alexisdev.airline_tickets.HotTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.screens.HotTicketsFragment"
         android:label="fragment_hot_tickets"
         tools:layout="@layout/fragment_hot_tickets" />
+    <fragment
+        android:id="@+id/searchDetailsFragment"
+        android:name="com.alexisdev.airline_tickets.screens.SearchDetailsFragment"
+        android:label="fragment_search_details"
+        tools:layout="@layout/fragment_search_details" >
+        <argument
+            android:name="arrival_location"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchDetailsFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="com.alexisdev.airline_tickets.screens.AllTicketsFragment"
+        android:label="fragment_all_tickets"
+        tools:layout="@layout/fragment_all_tickets" />
 </navigation>

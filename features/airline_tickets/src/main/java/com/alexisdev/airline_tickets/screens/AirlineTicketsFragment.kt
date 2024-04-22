@@ -1,12 +1,16 @@
-package com.alexisdev.airline_tickets
+package com.alexisdev.airline_tickets.screens
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alexisdev.airline_tickets.AirlineTicketsViewModel
 import com.alexisdev.airline_tickets.adapter.OffersDelegateAdapter
 import com.alexisdev.ui.adapter.DelegateAdapterManager
 import com.alexisdev.airline_tickets.databinding.FragmentAirlineTicketsBinding
@@ -17,9 +21,7 @@ class AirlineTicketsFragment : Fragment() {
     private val viewModel by viewModel<AirlineTicketsViewModel>()
     private lateinit var binding: FragmentAirlineTicketsBinding
     private val adapter by lazy {
-        DelegateAdapterManager(
-            OffersDelegateAdapter()
-        )
+        DelegateAdapterManager(OffersDelegateAdapter())
     }
 
     override fun onCreateView(
@@ -34,9 +36,18 @@ class AirlineTicketsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         subscribeObserver()
-        binding.inputArrival.setOnClickListener {
-            val action = AirlineTicketsFragmentDirections.actionAirlineTicketsFragmentToSearchBottomFragment()
-            findNavController().navigate(action)
+        binding.svArrival.setOnClickListener { navigateToSearchBottomSheet() }
+        departurePointListener()
+    }
+
+    private fun departurePointListener() {
+        binding.svDeparture.setOnEditorActionListener { query, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.saveDeparturePoint(query.text.toString())
+                true
+            } else {
+                false
+            }
         }
     }
 
@@ -50,5 +61,15 @@ class AirlineTicketsFragment : Fragment() {
         viewModel.offers.observe(viewLifecycleOwner) { offers ->
             adapter.swapData(offers)
         }
+        viewModel.departurePoint.observe(viewLifecycleOwner) { cachedDeparturePoint ->
+            binding.svDeparture.setText(cachedDeparturePoint)
+        }
+    }
+
+    private fun navigateToSearchBottomSheet() {
+        viewModel.saveDeparturePoint(binding.svDeparture.text.toString())
+        val action =
+            AirlineTicketsFragmentDirections.actionAirlineTicketsFragmentToSearchBottomFragment()
+        findNavController().navigate(action)
     }
 }

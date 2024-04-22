@@ -2,7 +2,7 @@ package com.alexisdev.model
 
 data class Ticket(
     val id: Int,
-    val badge: String,
+    val badge: String?,
     val price: Price,
     val providerName: String,
     val company: String,
@@ -24,10 +24,10 @@ data class FlightInfo(
 
 data class Luggage(
     val hasLuggage: Boolean,
-    val price: Price
+    val price: Price?
 )
 
 data class HandLuggage(
     val hasHandLuggage: Boolean,
-    val size: String
+    val size: String?
 )

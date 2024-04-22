@@ -1,4 +1,4 @@
-package com.alexisdev.airline_tickets
+package com.alexisdev.airline_tickets.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

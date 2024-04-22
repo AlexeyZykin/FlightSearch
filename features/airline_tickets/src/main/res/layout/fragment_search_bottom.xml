@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen"
-    tools:context=".SearchBottomFragment">
+    tools:context=".screens.SearchBottomFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvSearch"
@@ -50,6 +50,7 @@
                 android:drawableEnd="@drawable/ic_close"
                 android:hint="@string/search_placeholder_arrival"
                 android:inputType="text"
+                android:imeOptions="actionSearch"
                 android:minHeight="@dimen/min_height"
                 android:singleLine="true"
                 android:textSize="@dimen/body_large"

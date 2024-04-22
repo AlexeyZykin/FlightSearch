@@ -1,8 +1,8 @@
 package com.alexisdev.airline_tickets.adapter
 
-import com.alexisdev.airline_tickets.databinding.RecommendationItemBinding
 import com.alexisdev.airline_tickets.util.imgRes
 import com.alexisdev.model.Recommendation
+import com.alexisdev.resources.databinding.RecommendationItemBinding
 import com.alexisdev.ui.adapter.ViewBindingDelegateAdapter
 import com.bumptech.glide.Glide
 

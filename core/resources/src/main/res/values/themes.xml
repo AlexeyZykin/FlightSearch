@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/blue</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="bottomNavigationStyle">@style/bottomNavigationView</item>
+        <item name="chipStyle">@style/Widget.Material3.Chip.Assist.Elevated</item>
     </style>
 
     <style name="Theme.FlightSearch" parent="Base.Theme.FlightSearch" />
@@ -18,4 +19,6 @@
         <item name="itemIconTint">@color/bottom_nav_selector</item>
         <item name="itemTextColor">@color/bottom_nav_selector</item>
     </style>
+
+
 </resources>

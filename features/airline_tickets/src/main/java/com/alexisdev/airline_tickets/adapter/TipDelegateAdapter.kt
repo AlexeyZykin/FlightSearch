@@ -1,9 +1,8 @@
 package com.alexisdev.airline_tickets.adapter
 
-import android.view.View
-import com.alexisdev.airline_tickets.databinding.TipItemBinding
 import com.alexisdev.airline_tickets.util.imgRes
 import com.alexisdev.model.Tip
+import com.alexisdev.resources.databinding.TipItemBinding
 import com.alexisdev.ui.adapter.ViewBindingDelegateAdapter
 import com.bumptech.glide.Glide
 

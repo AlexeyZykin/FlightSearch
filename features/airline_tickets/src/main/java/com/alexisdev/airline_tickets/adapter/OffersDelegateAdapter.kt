@@ -1,10 +1,10 @@
 package com.alexisdev.airline_tickets.adapter
 
 import com.alexisdev.airline_tickets.R
-import com.alexisdev.airline_tickets.databinding.OfferItemBinding
 import com.alexisdev.airline_tickets.util.imgRes
 import com.alexisdev.airline_tickets.util.offerPriceFormat
 import com.alexisdev.model.Offer
+import com.alexisdev.resources.databinding.OfferItemBinding
 import com.alexisdev.ui.adapter.ViewBindingDelegateAdapter
 import com.bumptech.glide.Glide
 

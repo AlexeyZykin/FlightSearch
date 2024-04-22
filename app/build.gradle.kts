@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
+    implementation(project(":core:datastore"))
 
     implementation(project(":features:airline_tickets"))
     implementation(project(":features:hotels"))

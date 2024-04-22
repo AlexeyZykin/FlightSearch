@@ -1,11 +1,14 @@
-package com.alexisdev.airline_tickets
+package com.alexisdev.airline_tickets.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alexisdev.airline_tickets.R
+import com.alexisdev.airline_tickets.SearchViewModel
 import com.alexisdev.airline_tickets.adapter.RecommendationDelegateAdapter
 import com.alexisdev.airline_tickets.adapter.TipDelegateAdapter
 import com.alexisdev.airline_tickets.databinding.FragmentSearchBottomBinding
@@ -26,7 +29,6 @@ class SearchBottomFragment : BottomSheetDialogFragment() {
             recommendationItemClick(item)
         })
     }
-
     private val tipAdapter by lazy {
         DelegateAdapterManager(TipDelegateAdapter { item ->
             tipAction(item)
@@ -52,6 +54,20 @@ class SearchBottomFragment : BottomSheetDialogFragment() {
         binding.inputArrival.onDrawableEndClick {
             binding.inputArrival.setText("")
         }
+        binding.inputArrival.setOnEditorActionListener { query, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                navigateToSearchDetails(query.text.toString())
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun navigateToSearchDetails(query: String) {
+        val action =
+            SearchBottomFragmentDirections.actionSearchBottomFragmentToSearchDetailsFragment(query)
+        findNavController().navigate(action)
     }
 
     private fun initRecyclerView() {
@@ -71,18 +87,26 @@ class SearchBottomFragment : BottomSheetDialogFragment() {
         viewModel.recommendations.observe(viewLifecycleOwner) { recommendations ->
             recommendationAdapter.swapData(recommendations)
         }
+        viewModel.departurePoint.observe(viewLifecycleOwner) {
+            binding.inputDeparture.setText(it)
+        }
     }
 
     private fun tipAction(item: Tip) {
         when (item.tipAction) {
             TipAction.COMPLEX_ROUTE -> findNavController().navigate(R.id.action_searchBottomFragment_to_complexRouteFragment)
-            TipAction.ANYWHERE -> binding.inputArrival.setText("Какое-то место (заглушка)")
+            TipAction.ANYWHERE -> {
+                binding.inputArrival.setText(item.title)
+                navigateToSearchDetails(item.title)
+            }
             TipAction.WEEKEND -> findNavController().navigate(R.id.action_searchBottomFragment_to_weekendFragment)
             TipAction.HOT_TICKETS -> findNavController().navigate(R.id.action_searchBottomFragment_to_hotTicketsFragment)
         }
     }
 
     private fun recommendationItemClick(item: Recommendation) {
-        binding.inputArrival.setText(item.town)
+        val query = item.town
+        binding.inputArrival.setText(query)
+        navigateToSearchDetails(query)
     }
 }

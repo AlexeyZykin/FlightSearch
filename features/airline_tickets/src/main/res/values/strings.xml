@@ -1,13 +1,21 @@
 <resources>
     <string name="features_airline_tickets_main_title">Поиск дешевых\nавиабилетов</string>
     <string name="features_airline_tickets_offers_title">Музыкально отлететь</string>
-    <string name="price_currency">р</string>
+    <string name="price_currency">₽</string>
     <string name="offer_item_preposition_from">от</string>
     <string name="search_placeholder_arrival">Куда - Турция</string>
     <string name="search_placeholder_departure">Откуда - Москва</string>
+    <string name="complex_route_title">Сложный маршрут</string>
+    <string name="weekend_title">Выходные</string>
+    <string name="hot_tickets_title">Горячие билеты</string>
+    <string name="chip_return_date">обратно</string>
+    <string name="chip_ticket_options">1,эконом</string>
+    <string name="chip_filter">Фильтры</string>
+    <string name="flight_list_title">Прямые рейсы</string>
+    <string name="view_all_tickets_button">Посмотреть все билеты</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="complex_route_title">Сложный маршрут</string>
-    <string name="weekend_title">Weekend</string>
-    <string name="hot_tickets_title">Hot Tickets</string>
+    <string name="all_tickets_screen_filter_button">Фильтр</string>
+    <string name="all_tickets_screen_diagram_button">График цен</string>
+    <string name="nonstop">Без пересадок</string>
 </resources>

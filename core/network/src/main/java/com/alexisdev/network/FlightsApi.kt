@@ -2,7 +2,7 @@ package com.alexisdev.network
 
 import com.alexisdev.network.model.AllOffersDTO
 import com.alexisdev.network.model.AllTicketsDTO
-import com.alexisdev.network.model.AllTicketsOffersDTO
+import com.alexisdev.network.model.AllTicketOffersDTO
 import retrofit2.http.GET
 
 
@@ -11,8 +11,8 @@ interface FlightsApi {
     suspend fun fetchOffers(): AllOffersDTO
 
     @GET("offers_tickets.json")
-    fun fetchTicketsOffers(): AllTicketsOffersDTO
+    suspend fun fetchTicketOffers(): AllTicketOffersDTO
 
     @GET("tickets.json")
-    fun fetchTickets(): AllTicketsDTO
+    suspend fun fetchTickets(): AllTicketsDTO
 }

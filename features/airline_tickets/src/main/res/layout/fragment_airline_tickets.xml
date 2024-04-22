@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AirlineTicketsFragment">
+    tools:context=".screens.AirlineTicketsFragment">
 
     <TextView
         android:id="@+id/tvAirlineTicketsSearchTitle"
@@ -55,11 +55,12 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputDeparture"
+                        android:id="@+id/svDeparture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/transparent"
                         android:hint="@string/search_placeholder_departure"
+                        android:imeOptions="actionSearch"
                         android:inputType="text"
                         android:minHeight="@dimen/min_height"
                         android:singleLine="true"
@@ -72,7 +73,7 @@
                         android:background="@color/grey" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputArrival"
+                        android:id="@+id/svArrival"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/transparent"
